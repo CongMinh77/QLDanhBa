@@ -1,0 +1,49 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+char dsten[1000][100], dssdt[1000][11], dsemail[1000][50];
+int N = 0;
+#include "mylib.h"
+#include <stdlib.h>
+int main()
+{
+	DocTen();
+    int chon;
+    do
+    {
+        chon = ThucDon();
+        if (chon == 1)
+        {
+            ThemDanhBa();
+            cin.ignore();
+            cout<<"Du lieu da duoc them\n";
+        }
+        else if (chon == 2)
+        {
+            HienThiDanhBa();
+            cin.ignore();
+        }
+        else if (chon ==3)
+        {
+        	HienThiDanhBa();
+        	SuaLienHe();
+		}
+        else if (chon == 4)
+        {
+        	HienThiDanhBa();
+        	XoaLienHe();
+        }
+        else if (chon ==0)
+        {
+        	GhiTen();
+        	system("cls");
+            cout<<"Cam on ban da su dung chuong trinh!\n";
+            break;
+        }
+        cout<<"Nhan phim ENTER de tiep tuc\n";
+        cin.get();
+        system("cls");
+    }while (chon !=0);
+    return 0;
+}
+
