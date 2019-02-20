@@ -1,0 +1,122 @@
+#include <string.h>
+#include <fstream>
+using namespace std;
+int ThucDon()
+{	
+    cout<<"CHUONG TRINH QUAN LY DANH BA CHO NCM\n";
+    cout<<"1. Them lien he\n";
+    cout<<"2. Hien thi tat ca lien he\n";
+    cout<<"3. Sua lien he\n";
+    cout<<"4. Xoa lien he\n";
+    cout<<"0. Ket thuc\n";
+    cout<<"Chon 1 chuc nang: ";
+    int chon;
+    cin>>chon;
+    return chon;
+}
+
+void ThemDanhBa()
+{
+    char ten[100], sdt[11], email[50];
+
+    cout<<"Nhap ten lien he: ";
+    cin.ignore();
+    cin.getline(ten, 100);
+    
+    cout<<"Nhap so dien thoai: ";
+    cin.getline(sdt, 11);
+    
+    cout<<"Nhap email: ";
+    cin.getline(email, 50);
+    
+    strcpy(dsten[N], ten);
+    strcpy(dssdt[N], sdt);
+    strcpy(dsemail[N], email);
+    N++;
+}
+
+void HienThiDanhBa()
+{
+    cout<<"Co "<<N<<" lien he\n";
+    cout<<"STT  Ten\tDien thoai\tEmail\n";
+    for(int i = 0; i<N; i++)
+    {
+        cout<<i+1<<".   "<<dsten[i]<<"\t"<<dssdt[i]<<"\t"<<dsemail[i]<<endl;
+    }
+}
+
+
+void GhiTen()
+{
+	ofstream fout;
+	fout.open("danhba.data");
+//	fout<<"Co "<<N<<" lien he \n";
+	fout<<N<<endl;
+	for(int i=0; i<N; i++)
+	{
+		fout<<dsten[i]<<endl;
+		fout<<dssdt[i]<<endl;
+		fout<<dsemail[i]<<endl;
+	}
+	fout.close();
+}
+
+
+void DocTen()
+{
+	ifstream fin;
+	fin.open("danhba.data");
+	fin>>N;
+	char t[1000];
+	fin.getline(t,1000);
+	for (int i=0; i<N; i++)
+	{
+		fin>>dsten[i];
+		fin>>dssdt[i];
+		fin>>dsemail[i];
+	}
+	fin.close();
+}
+
+
+void XoaLienHe()
+{
+	int a;
+    cout<<"Nhap stt lien he can xoa: ";
+    cin>>a;
+    if (a!=0)
+    {
+	    for(int j=a-1; j<N-1; j++)
+	    {
+	    	strcpy(dsten[j], dsten[j+1]);
+			strcpy(dssdt[j], dssdt[j+1]);
+			strcpy(dsemail[j], dsemail[j+1]);
+	    } 
+	N--;
+	}	
+}
+
+
+void SuaLienHe()
+{
+	int a;
+	cout<<"Nhap stt lien he can sua: ";
+	cin>>a;
+	if (a!=0)
+	{
+		char ten[100], sdt[11], email[50];
+		cout<<"Nhap lai ten lien he: ";
+	    cin.ignore();
+	    cin.getline(ten, 100);
+	    
+	    cout<<"Nhap lai so dien thoai: ";
+	    cin.getline(sdt, 11);
+	    
+	    cout<<"Nhap lai email: ";
+	    cin.getline(email, 50);
+	    
+	    strcpy(dsten[a-1], ten);
+	    strcpy(dssdt[a-1], sdt);
+	    strcpy(dsemail[a-1], email);	
+	}
+}
