@@ -1,0 +1,148 @@
+#include <fstream>
+#include <string.h>
+using namespace std;
+int LuaChon()
+{
+	cout<<"Thu Chi Cho Hop Li Em Ei\n";
+	cout<<"1. Them tien thu\n";
+	cout<<"2. Them tien chi\n";
+	cout<<"3. Hien bang thu chi\n";
+	cout<<"4. Sua tien thu\n";
+	cout<<"5. Sua tien chi\n";
+	cout<<"0. Out\n";
+	cout<<"Ban chon chuc nang: ";
+	int chon;
+	cin>>chon;
+	return chon;
+}
+
+void NhapThu()
+{
+	char tenthu[50], sotienthu[1000];
+	cout<<"Nhap ten li do thu: ";
+    cin.ignore();
+    cin.getline(tenthu, 50);
+    
+    cout<<"Nhap so tien thu: ";
+    cin.getline(sotienthu, 1000);
+    
+    strcpy(dst[N].tenthu, tenthu);
+    strcpy(dst[N].sotienthu, sotienthu);
+    N++;
+}
+
+void NhapTieu()
+{
+	char tenchi[50], sotienchi[1000];
+	cout<<"Nhap ten li do chi tieu: ";
+    cin.ignore();
+    cin.getline(tenchi, 50);
+    
+    cout<<"Nhap so tien chi tieu: ";
+    cin.getline(sotienchi, 1000);
+    
+    strcpy(dst[N].tenchi, tenchi);
+    strcpy(dst[N].sotienchi, sotienchi);
+    N++;
+}
+
+void HienThi()
+{
+	cout<<"STT|  |Ten li do thu\t|So tien thu\n";
+    for(int i = 0; i<N; i++)
+    {
+        cout<<i+1<<"  |  |"<<dst[i].tenthu<<"\t|"<<dst[i].sotienthu<<endl;
+    }
+    cout<<"STT|  |Ten li do chi\t|So tie tieu\n";
+    for(int i = 0; i<N; i++)
+    {
+        cout<<i+1<<"  |  |"<<dst[i].tenchi<<"\t|"<<dst[i].sotienchi<<endl;
+    }
+}
+
+void Xoa()
+{
+	int vt=-1;int thaydoi=N-1;
+	while(vt==-1)
+	{
+		cout<<"Nhap STT ten li do can xoa: ";
+		cin>>vt;
+	}
+    	strcpy(dst[vt-1].tenthu, dst[N-1].tenthu);
+		strcpy(dst[vt-1].tenchi, dst[N-1].tenchi);
+		strcpy(dst[vt-1].sotienthu, dst[N-1].sotienthu);
+	    strcpy(dst[vt-1].sotienchi, dst[N-1].sotienchi);
+	N--;
+	
+}
+
+
+void SuaSoThu()
+{
+	int a;
+	cout<<"Nhap stt so tien thu can sua: ";
+	cin>>a;
+	if (a!=0)
+	{
+		char tenthu[50], sotienthu[1000];
+		cout<<"Nhap lai ten li do thu: ";
+	    cin.ignore();
+	    cin.getline(tenthu, 50);
+	    
+	    cout<<"Nhap lai so tien thu: ";
+	    cin.getline(sotienthu, 1000);
+	    
+	    strcpy(dst[a-1].tenthu, tenthu);
+	    strcpy(dst[a-1].sotienthu, sotienthu);
+	}
+}
+
+void SuaSoChi()
+{
+	int a;
+	cout<<"Nhap stt so tien chi can sua: ";
+	cin>>a;
+	if (a!=0)
+	{
+		char tenchi[50], sotienchi[1000];
+		cout<<"Nhap lai ten li do chi: ";
+	    cin.ignore();
+	    cin.getline(tenchi, 50);
+	    
+	    cout<<"Nhap lai so tien chi: ";
+	    cin.getline(sotienchi, 1000);
+	    
+	    strcpy(dst[a-1].tenchi, tenchi);
+	    strcpy(dst[a-1].sotienchi, sotienchi);
+	}
+}
+
+void Luu()
+{
+	ofstream fout("dsthuchi.minh");
+	fout<<N<<endl;
+	for(int i=0; i<N; i++)
+	{
+		fout<<dst[i].tenthu<<endl;
+		fout<<dst[i].tenchi<<endl;
+		fout<<dst[i].sotienthu<<endl;
+		fout<<dst[i].sotienchi<<endl;
+	}
+	fout.close();
+}
+
+void MoBang()
+{
+	ifstream fin("dsthuchi.minh");
+	fin>>N;
+	char t[100];
+	fin.getline(t, 100);
+	for(int i=0; i<N; i++)
+	{
+		fin.getline(dst[i].tenthu, 50);
+		fin.getline(dst[i].tenchi, 50);
+		fin.getline(dst[i].sotienthu, 1000);
+		fin.getline(dst[i].sotienchi, 1000);
+	}
+	fin.close();
+}
