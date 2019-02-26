@@ -3,7 +3,7 @@
 using namespace std;
 int LuaChon()
 {
-	cout<<"Thu Chi Cho Hop Li Em Ei\n";
+	cout<<"Bang thu chi hop li\n";
 	cout<<"1. Them tien thu\n";
 	cout<<"2. Them tien chi\n";
 	cout<<"3. Hien bang thu chi\n";
