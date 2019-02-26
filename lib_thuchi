@@ -9,6 +9,7 @@ int LuaChon()
 	cout<<"3. Hien bang thu chi\n";
 	cout<<"4. Sua tien thu\n";
 	cout<<"5. Sua tien chi\n";
+	cout<<"6. Xoa muc\n";
 	cout<<"0. Out\n";
 	cout<<"Ban chon chuc nang: ";
 	int chon;
