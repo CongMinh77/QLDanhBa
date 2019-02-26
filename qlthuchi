@@ -1,0 +1,62 @@
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+struct QLTien
+{
+	char tenthu[50];
+	char tenchi[50];
+	char sotienthu[1000];
+	char sotienchi[1000];
+};
+QLTien dst[1000];
+int N=0;
+#include "lib_thuchi.h"
+int main()
+{
+	MoBang();
+	char ten[1000];
+	int chon;
+	do
+	{
+		chon=LuaChon();
+		if (chon==1)
+		{
+			NhapThu();
+		}
+		else if (chon==2)
+		{
+			NhapTieu();
+		}
+		else if (chon==3)
+		{
+			HienThi();
+			cin.ignore();
+		}
+		else if (chon==4)
+		{
+			HienThi();
+			SuaSoThu();
+		}
+		else if (chon==5)
+		{
+			HienThi();
+			SuaSoChi();
+		}
+		else if (chon ==6)
+		{
+			HienThi();
+			Xoa();
+		}
+		else if (chon==0)
+		{
+			Luu();
+			system("cls");
+			cout<<"See You Again!!\n";
+			break;
+		}
+		cout<<"Nhan ENTER de tro lai\n";
+		cin.get();
+		system("cls");
+	}while(chon!=0);
+	return 0;
+}
